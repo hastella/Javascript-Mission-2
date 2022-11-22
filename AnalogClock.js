@@ -1,21 +1,23 @@
 const AnalogClock = ($container) => {
   const deg = 6;
-  const hr = document.querySelector(".hand.hour");
-  const mn = document.querySelector(".hand.minute");
-  const sc = document.querySelector(".hand.second");
+  const hr = document.querySelectorAll(".hand.hour");
+  const mn = document.querySelectorAll(".hand.minute");
+  const sc = document.querySelectorAll(".hand.second");
+  // console.log(hr, mn, sc);
 
   setInterval(() => {
     // 현재 시간 가져오기
     let day = new Date();
 
-    //시간을 단위로 추출
+    // 시간을 단위로 추출
     let hh = day.getHours() * 30;
     let mm = day.getMinutes() * deg;
     let ss = day.getSeconds() * deg;
 
-    hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
-    mn.style.transform = `rotateZ(${mm}deg)`;
-    sc.style.transform = `rotateZ(${ss}deg)`;
+    // 재사용을 위한 forEach문 사용
+    hr.forEach((hr) => (hr.style.transform = `rotateZ(${hh + mm / 12}deg)`));
+    mn.forEach((min) => (min.style.transform = `rotateZ(${mm}deg)`));
+    sc.forEach((sec) => (sec.style.transform = `rotateZ(${ss}deg)`));
   });
 };
 
