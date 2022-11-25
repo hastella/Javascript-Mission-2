@@ -7,12 +7,12 @@ const AnalogClock = ($container) => {
 
   setInterval(() => {
     // 현재 시간 가져오기
-    let day = new Date();
+    const day = new Date();
 
     // 시간을 단위로 추출
-    let hh = day.getHours() * 30;
-    let mm = day.getMinutes() * deg;
-    let ss = day.getSeconds() * deg;
+    const hh = day.getHours() * 30;
+    const mm = day.getMinutes() * deg;
+    const ss = day.getSeconds() * deg;
 
     // 재사용을 위한 forEach문 사용
     hr.forEach((hr) => (hr.style.transform = `rotateZ(${hh + mm / 12}deg)`));
